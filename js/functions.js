@@ -57,7 +57,19 @@ function spawnObstacle() {
             el.classList.add('bigAnimated');
             break;
 
-        case randomObstacle < 0.60:
+        case randomObstacle < 0.20:
+            el.classList.add('fly1');
+            el.classList.remove('animated');
+            el.classList.add('animatedFly');
+            break;
+
+        case randomObstacle < 0.30:
+            el.classList.add('fly2');
+            el.classList.remove('animated');
+            el.classList.add('animatedFly');
+            break;
+
+        case randomObstacle < 0.65:
             el.classList.add('type1');
             break;
 

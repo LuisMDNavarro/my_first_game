@@ -2,6 +2,7 @@
         --bg: #f7f7f7;
         --ground: #777;
         --player: url('../img/dog_walk.png') no-repeat;
+        --player_jump: url('../img/dog_jump.png') no-repeat;
         --obstacle_1: url('../img/car_ride.png') no-repeat;
         --obstacle_2: url('../img/car2_ride.png') no-repeat;
         --flyObstacle_1: url('../img/bird_walk.png') no-repeat;
@@ -108,12 +109,12 @@
         left: 80px;
         bottom: 24px;
         width: 48px;
-        height: 48px;
+        height: 29px;
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        background: var(--player);
-        background-size: cover;
+        background: var(--player) no-repeat bottom;
+        background-size: 288px 48px;
     }
 
     @keyframes playerRun {
@@ -135,6 +136,10 @@
 
     /* Jumping */
     .jumping {
+        width: 48px;
+        height: 29px;
+        background: var(--player_jump) no-repeat bottom;
+        background-size: 48px 48px;
         animation: jump 0.7s ease forwards
     }
 
@@ -215,6 +220,36 @@
 
     .obstacle.animated {
         animation: obstacleRun 0.6s steps(8) infinite;
+    }
+
+    .obstacle.fly1 {
+        position: absolute;
+        bottom: 72px;
+        width: 32px;
+        height: 32px;
+        background: var(--flyObstacle_1) no-repeat bottom;
+    }
+
+    .obstacle.fly2 {
+        position: absolute;
+        bottom: 72px;
+        width: 32px;
+        height: 32px;
+        background: var(--flyObstacle_2) no-repeat bottom;
+    }
+
+    @keyframes obstacleFly {
+        from {
+            background-position-x: 0;
+        }
+
+        to {
+            background-position-x: -192px;
+        }
+    }
+
+    .obstacle.animatedFly {
+        animation: obstacleFly 0.6s steps(6) infinite;
     }
 
     .obstacle.big {
