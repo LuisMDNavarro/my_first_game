@@ -5,11 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucky Game</title>
-    <link rel="icon" href="img/espada_sangre2.ico" type="image/x-icon">
+    <link rel="icon" href="img/icon/espada_sangre2.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="character-select">
+        <img src="img/players/dog_jump.png" onclick="changeCharacter('type1')" alt="Doberman">
+        <img src="img/players/dog2_jump.png" onclick="changeCharacter('type2')" alt="Shiba Inu">
+        <img src="img/players/cat_jump.png" onclick="changeCharacter('type3')" alt="Black Cat">
+        <img src="img/players/cat2_jump.png" onclick="changeCharacter('type4')" alt="Orange Cat">
+    </div>
     <div class="game-wrap" id="game">
         <div class="sky"></div>
         <div class="hud"><span id="score">0</span></div>

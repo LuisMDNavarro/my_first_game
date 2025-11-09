@@ -1,13 +1,19 @@
     :root {
         --bg: #f7f7f7;
         --ground: #777;
-        --player: url('../img/dog_walk.png') no-repeat;
-        --player_jump: url('../img/dog_jump.png') no-repeat;
-        --obstacle_1: url('../img/car_ride.png') no-repeat;
-        --obstacle_2: url('../img/car2_ride.png') no-repeat;
-        --flyObstacle_1: url('../img/bird_walk.png') no-repeat;
-        --flyObstacle_2: url('../img/bird2_walk.png') no-repeat;
-        --bigtObstacle: url('../img/car3_ride.png') no-repeat;
+        --player_1: url('../img/players/dog_walk.png') no-repeat;
+        --player_1_jump: url('../img/players/dog_jump.png') no-repeat;
+        --player_2: url('../img/players/dog2_walk.png') no-repeat;
+        --player_2_jump: url('../img/players/dog2_jump.png') no-repeat;
+        --player_3: url('../img/players/cat_walk.png') no-repeat;
+        --player_3_jump: url('../img/players/cat_jump.png') no-repeat;
+        --player_4: url('../img/players/cat2_walk.png') no-repeat;
+        --player_4_jump: url('../img/players/cat2_jump.png') no-repeat;
+        --obstacle_1: url('../img/obstacles/car_ride.png') no-repeat;
+        --obstacle_2: url('../img/obstacles/car2_ride.png') no-repeat;
+        --flyObstacle_1: url('../img/obstacles/bird_walk.png') no-repeat;
+        --flyObstacle_2: url('../img/obstacles/bird2_walk.png') no-repeat;
+        --bigtObstacle: url('../img/obstacles/car3_ride.png') no-repeat;
     }
 
     * {
@@ -37,6 +43,32 @@
         box-shadow: 0 8px 30px rgba(10, 20, 40, .08);
         overflow: hidden;
         position: relative
+    }
+
+    .character-select {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 30;
+    }
+
+    .character-select img {
+        width: 80px;
+        height: 80px;
+        cursor: pointer;
+        border-radius: 10%;
+        border: 2px solid transparent;
+        transition: transform 0.2s, border-color 0.2s;
+        margin: 10px;
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .character-select img:hover {
+        transform: scale(1.1);
+        border-color: rgb(106, 127, 250);
     }
 
     /* Sky */
@@ -113,7 +145,27 @@
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        background: var(--player) no-repeat bottom;
+        background: var(--player_1) no-repeat bottom;
+        background-size: 288px 48px;
+    }
+
+    .player.type1 {
+        background: var(--player_1) no-repeat bottom;
+        background-size: 288px 48px;
+    }
+
+    .player.type2 {
+        background: var(--player_2) no-repeat bottom;
+        background-size: 288px 48px;
+    }
+
+    .player.type3 {
+        background: var(--player_3) no-repeat bottom;
+        background-size: 288px 48px;
+    }
+
+    .player.type4 {
+        background: var(--player_4) no-repeat bottom;
         background-size: 288px 48px;
     }
 
@@ -138,9 +190,29 @@
     .jumping {
         width: 48px;
         height: 29px;
-        background: var(--player_jump) no-repeat bottom;
+        background: var(--player_1_jump) no-repeat bottom;
         background-size: 48px 48px;
         animation: jump 0.7s ease forwards
+    }
+
+    .jumping.type1 {
+        background: var(--player_1_jump) no-repeat bottom;
+        background-size: 48px 48px;
+    }
+
+    .jumping.type2 {
+        background: var(--player_2_jump) no-repeat bottom;
+        background-size: 48px 48px;
+    }
+
+    .jumping.type3 {
+        background: var(--player_3_jump) no-repeat bottom;
+        background-size: 48px 48px;
+    }
+
+    .jumping.type4 {
+        background: var(--player_4_jump) no-repeat bottom;
+        background-size: 48px 48px;
     }
 
     @keyframes jump {
@@ -255,7 +327,7 @@
     .obstacle.big {
         width: 128px;
         height: 40px;
-        background: var(--bigtObstacle)  no-repeat bottom;
+        background: var(--bigtObstacle) no-repeat bottom;
         background-size: 1024px 128px;
     }
 

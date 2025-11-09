@@ -16,6 +16,34 @@ let score = 0
 let frame = 0
 let loopId = null
 
+function changeCharacter(character) {
+    player.classList.forEach(cls => {
+        if (cls.startsWith("type")) player.classList.remove(cls);
+    });
+
+    switch (true) {
+        case character == "type1":
+            player.classList.add('type1');
+            break;
+
+        case character == "type2":
+            player.classList.add('type2');
+            break;
+
+        case character == "type3":
+            player.classList.add('type3');
+            break;
+
+        case character == "type4":
+            player.classList.add('type4');
+            break;
+
+        default:
+            player.classList.add('type1');
+            break;
+    }
+}
+
 // Controls
 function startGame() {
     reset()
@@ -87,7 +115,11 @@ function jump() {
     if (!playing) startGame()
     if (jumping) return
     jumping = true
+    const currentCharacter = [...player.classList].find(c => c.startsWith("type"));
     player.classList.add('jumping')
+    if (currentCharacter) {
+        player.classList.add(currentCharacter)
+    }
     player.classList.remove('running')
     setTimeout(() => {
         player.classList.remove('jumping')
