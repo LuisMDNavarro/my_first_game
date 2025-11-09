@@ -138,7 +138,7 @@ document.addEventListener('keydown', e => {
     }
 })
 
-game.addEventListener('click', () => jump())
+document.addEventListener('click', () => jump())
 restartBtn.addEventListener('click', () => startGame())
 
 // Main loop
