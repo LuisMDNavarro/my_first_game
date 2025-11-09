@@ -177,14 +177,15 @@ function loop() {
     for (const o of obstacles) {
         const oRect = o.el.getBoundingClientRect();
 
-        const sideTrim = 0.20;
+        const sideTrim = 0.30;
         const trimLeft = oRect.width * sideTrim;
         const trimRight = oRect.width * sideTrim;
+        const trimTop = oRect.width * sideTrim;
 
         const hitbox = {
             left: oRect.left + trimLeft,
             right: oRect.right - trimRight,
-            top: oRect.top,
+            top: oRect.top + trimTop,
             bottom: oRect.bottom
         };
 
