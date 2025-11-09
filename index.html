@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Game</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="game-wrap" id="game">
+        <div class="sky"></div>
+        <div class="hud"><span id="score">0</span></div>
+
+        <div class="player running" id="player" aria-hidden="true"></div>
+
+        <div class="ground"></div>
+
+        <div class="overlay" id="overlay">
+            <div style="font-size:20px" id="gameMessage">¡Bienvenido!</div>
+            <div id="finalScore">Pulsa espacio o haz click para empezar</div>
+            <button class="btn" id="restartBtn">Iniciar</button>
+        </div>
+    </div>
+
+    <script src="js/functions.js"></script>
+</body>
+
+</html>

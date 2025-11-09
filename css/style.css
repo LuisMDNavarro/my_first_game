@@ -1,0 +1,280 @@
+    :root {
+        --bg: #f7f7f7;
+        --ground: #777;
+        --player: url('../img/dog_walk.png') no-repeat;
+        --obstacle_1: url('../img/car_ride.png') no-repeat;
+        --obstacle_2: url('../img/car2_ride.png') no-repeat;
+        --flyObstacle_1: url('../img/bird_walk.png') no-repeat;
+        --flyObstacle_2: url('../img/bird2_walk.png') no-repeat;
+        --bigtObstacle: url('../img/car3_ride.png') no-repeat;
+    }
+
+    * {
+        box-sizing: border-box
+    }
+
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        font-family: Inter, system-ui, Segoe UI, Arial
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(#838383, #838383);
+    }
+
+    .game-wrap {
+        width: 900px;
+        max-width: 95vw;
+        height: 220px;
+        background: var(--bg);
+        border-radius: 8px;
+        box-shadow: 0 8px 30px rgba(10, 20, 40, .08);
+        overflow: hidden;
+        position: relative
+    }
+
+    /* Sky */
+    .sky {
+        position: absolute;
+        inset: 0;
+        background: #a8f2f5;
+    }
+
+    /* Score */
+    .hud {
+        position: absolute;
+        right: 12px;
+        top: 10px;
+        font-weight: 700;
+        color: #333;
+        letter-spacing: .6px
+    }
+
+    /* Ground */
+    .ground {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 24px;
+        background: linear-gradient(90deg, #383838, #383838);
+        display: flex;
+        align-items: center;
+        padding-left: 24px
+    }
+
+    .ground::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: -6px;
+        height: 6px;
+        background: linear-gradient(90deg, rgba(0, 0, 0, .06), rgba(255, 255, 255, .03));
+    }
+
+    .ground::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 8px;
+        height: 4px;
+        background: repeating-linear-gradient(90deg,
+                yellow 0 50px,
+                transparent 50px 100px);
+        opacity: 0.9;
+        animation: moveRoad 1.5s linear infinite;
+    }
+
+    @keyframes moveRoad {
+        from {
+            background-position-x: 0;
+        }
+
+        to {
+            background-position-x: -100px;
+        }
+    }
+
+    /* Player */
+    .player {
+        position: absolute;
+        left: 80px;
+        bottom: 24px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        background: var(--player);
+        background-size: cover;
+    }
+
+    @keyframes playerRun {
+        from {
+            background-position-x: 0;
+        }
+
+        to {
+            background-position-x: -288px;
+            /* 288 pixels */
+        }
+    }
+
+    .player.running {
+        animation: playerRun 0.6s steps(6) infinite;
+        /* 6 frames */
+    }
+
+
+    /* Jumping */
+    .jumping {
+        animation: jump 0.7s ease forwards
+    }
+
+    @keyframes jump {
+        0% {
+            transform: translateY(0)
+        }
+
+        10% {
+            transform: translateY(-20px)
+        }
+
+        20% {
+            transform: translateY(-40px)
+        }
+
+        30% {
+            transform: translateY(-60px)
+        }
+
+        40% {
+            transform: translateY(-80px)
+        }
+
+        50% {
+            transform: translateY(-100px)
+        }
+
+        60% {
+            transform: translateY(-80px)
+        }
+
+        70% {
+            transform: translateY(-60px)
+        }
+
+        80% {
+            transform: translateY(-40px)
+        }
+
+        90% {
+            transform: translateY(-20px)
+        }
+
+        100% {
+            transform: translateY(0)
+        }
+    }
+
+    /* Obstacle */
+    .obstacle {
+        position: absolute;
+        bottom: 24px;
+        width: 96px;
+        height: 35px;
+        background-size: 768px 96px;
+    }
+
+    .obstacle.type1 {
+        background: var(--obstacle_1) no-repeat bottom;
+        background-size: 768px 96px;
+    }
+
+    .obstacle.type2 {
+        background: var(--obstacle_2) no-repeat bottom;
+        background-size: 768px 96px;
+    }
+
+    @keyframes obstacleRun {
+        from {
+            background-position-x: 0;
+        }
+
+        to {
+            background-position-x: -768px;
+        }
+    }
+
+    .obstacle.animated {
+        animation: obstacleRun 0.6s steps(8) infinite;
+    }
+
+    .obstacle.big {
+        width: 128px;
+        height: 40px;
+        background: var(--bigtObstacle)  no-repeat bottom;
+        background-size: 1024px 128px;
+    }
+
+
+    @keyframes obstacleBigRun {
+        from {
+            background-position-x: 0;
+        }
+
+        to {
+            background-position-x: -1024px;
+        }
+    }
+
+    .obstacle.bigAnimated {
+        animation: obstacleBigRun 0.6s steps(8) infinite;
+    }
+
+    /* Game over overlay */
+    .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, .85);
+        backdrop-filter: blur(2px);
+        flex-direction: column;
+        gap: 12px;
+        font-weight: 700;
+        color: #111;
+        display: none
+    }
+
+    .overlay.show {
+        display: flex
+    }
+
+    .btn {
+        background: #111;
+        color: #fff;
+        padding: 8px 14px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer
+    }
+
+    /* Responsive small */
+    @media (max-width:420px) {
+        .player {
+            left: 40px
+        }
+
+        .ground {
+            padding-left: 12px
+        }
+    }
